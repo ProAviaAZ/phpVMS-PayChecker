@@ -17,6 +17,7 @@ if(!$allpireps) {
 			<th>Status</th>
 			<th>Last PIREP Pay</th> <!-- What they have been payed -->
 			<th>Last PIREP Real Pay</th> <!-- What they should have been payed -->
+			<th>Revenue</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -50,6 +51,22 @@ if(!$allpireps) {
 		</td>
 		<td align="center"><?php echo FinanceData::formatMoney($ledger->amount); ?></td>
 		<td align="center"><?php echo $realpay; ?></td>
+		<td align="left">
+			<?php
+			$gross = $pirep->price * $pirep->load;
+			# $gross = $pirep->gross;
+			$revenue = $gross - $pirep->expenses - $pirep->fuelprice - $ledger->amount;
+			echo 'Gross '.$pirep->gross;
+			echo '<br />';
+			echo 'Expenses '.$pirep->expenses;
+			echo '<br />';
+			echo 'Fuel Price '.$pirep->fuelprice;
+			echo '<br />';
+			echo 'Pilot Pay $'.$ledger->amount;
+			echo '<hr />';
+			echo '<strong>Revenue: '.$revenue.'</strong>';
+			?>
+		</td>
 	</tr>
 	<?php
 	}
