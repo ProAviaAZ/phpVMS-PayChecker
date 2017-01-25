@@ -14,7 +14,7 @@ if(!$allpilots) {
 			<th>Last PIREP Apts</th>
 			<th>Last PIREP Pay</th> <!-- What they have been payed -->
 			<th>Last PIREP Real Pay</th> <!-- What they should have been payed -->
-			<th>Total Pay</th>
+			<th>Pilot's Total Pay</th>
 			<th>Options</th>
 		</tr>
 	</thead>
