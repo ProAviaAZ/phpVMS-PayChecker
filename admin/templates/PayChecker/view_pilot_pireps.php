@@ -56,19 +56,19 @@ if(!$allpireps) {
 			$gross = $pirep->price * $pirep->load;
 			# $gross = $pirep->gross;
 			$revenue = $gross - $pirep->expenses - $pirep->fuelprice - $ledger->amount;
-			echo 'PIREP Gross '.$pirep->gross;
+			echo 'PIREP Gross: '.$pirep->gross;
 			echo '<br />';
-			echo 'Actual Gross '.$gross;
+			echo 'Actual Gross: '.$gross;
 			echo '<br />';
-			echo 'Expenses '.$pirep->expenses;
+			echo 'Expenses: '.$pirep->expenses;
 			echo '<br />';
-			echo 'Fuel Price '.$pirep->fuelprice;
+			echo 'Fuel Price: '.FinanceData::formatMoney($pirep->fuelprice);
 			echo '<br />';
-			echo 'Pilot Pay $'.$ledger->amount;
+			echo 'Pilot Pay: '.FinanceData::formatMoney($ledger->amount);
 			echo '<hr />';
-			echo '<strong>Actual Revenue: '.$revenue.'</strong>';
+			echo '<strong>Actual Revenue: '.FinanceData::formatMoney($revenue).'</strong>';
 			echo '<br />';
-			echo '<strong>PIREP Revenue: '.$pirep->revenue.'</strong>';
+			echo '<strong>PIREP Revenue: '.FinanceData::formatMoney($pirep->revenue).'</strong>';
 			?>
 		</td>
 	</tr>
