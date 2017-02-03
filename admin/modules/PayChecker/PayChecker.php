@@ -260,4 +260,28 @@ class PayChecker extends CodonModule {
 		// $totalpay = $pilot->payrate * $pirep->flighttime; # What you were getting before
 		return FinanceData::formatMoney($totalpay);
 	}
+	
+	/***
+	**
+	**
+	** Use this function to return the pilot's current pay in a view
+	** Just pass in a ?pirepid=$pirep->pirepid value and it will return the pay correctly.
+	** e.g. http://yourvaurl.com/index.php/PayChecker/getEstimatePayPIREP?pirepid=1
+	**
+	***/
+	public function getEstimatePayPIREP($pirepid = '') {
+		if(!$pirepid) {
+			$pirepid = DB::escape($this->get->pirepid);
+		}
+		$sql = 'SELECT * FROM `'.TABLE_PREFIX.'pireps` WHERE `pirepid` = '.$pirepid;
+		$pirep = DB::get_row($sql);
+				
+		// Explode the flighttimes
+		$flighttime = explode('.', $pirep->flighttime);
+		$flighttime_min = ($flighttime[0] * 60) + ($flighttime[1]);
+		$totalpay = ($pirep->pilotpay / 60) * $flighttime_min;
+		
+		// $totalpay = $pilot->payrate * $pirep->flighttime; # What you were getting before
+		return FinanceData::formatMoney($totalpay);
+	}
 }
