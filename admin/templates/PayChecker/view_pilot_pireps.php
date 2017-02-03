@@ -69,6 +69,9 @@ if(!$allpireps) {
 			echo '<strong>Actual Revenue: '.FinanceData::formatMoney($revenue).'</strong>';
 			echo '<br />';
 			echo '<strong>PIREP Revenue: '.FinanceData::formatMoney($pirep->revenue).'</strong>';
+			echo '<hr />';
+			$pirep_revenue = $gross - $pirep->expenses - $pirep->fuelprice - $pirep->pilotpay;
+			echo '<strong>Final Revenue (per PIREP Pilotpay): <br /> '.FinanceData::formatMoney($pirep_revenue).'</strong>';
 			?>
 		</td>
 	</tr>
